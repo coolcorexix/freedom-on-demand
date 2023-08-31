@@ -14,8 +14,6 @@ function freezeDOM() {
       args: ["action"],
     });
   });
-
-  
 }
 chrome.commands.onCommand.addListener((command) => {
   if (command === "freeze-dom") {
@@ -32,10 +30,11 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-
-// Add a click event listener for the context menu item
-chrome.contextMenus.onClicked.addListener((info) => {
-  if (info.menuItemId === "freezeDOM") {
-    freezeDOM();
-  }
+chrome.runtime.onStartup.addListener(() => {
+  // Add a click event listener for the context menu item
+  chrome.contextMenus.onClicked.addListener((info) => {
+    if (info.menuItemId === "freezeDOM") {
+      freezeDOM();
+    }
+  });
 });
