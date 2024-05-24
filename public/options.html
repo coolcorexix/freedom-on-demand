@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="/icons/icon32.png" />
+  <meta charset="UTF-8" />
+  <title>Freeze DOM</title>
+  <!-- <link rel="stylesheet" href="options.css" /> -->
+</head>
+
+<body>
+  <div class="app">
+
+    <div style="display: none;
+        line-height: 1.5;
+        font-size: 16px;
+        display: block;
+        max-width: 768px;
+        margin: auto;
+        padding-top: 32px;" id="love-letter">
+      <img src="/icons/icon128.png" alt="Freeze DOM Logo" />
+      <h1>
+        New chapter for Freeze DOM.
+      </h1>
+      <p>
+        Dear users of Freeze DOM,<br />
+        <br />
+        First of all, let me share you a great news - thanks to your support, the app is reaching 1000 users!
+        During the journey, I hope the app has helped you save a ton of headaches when trying to inspect tricky HTML/CSS
+        areas.
+        <br />
+        <br />
+        In order to keep the light on as a solo maker while keeping the app ads-free, I have decided to put a small
+        one-time-payment
+        price tag on Freeze DOM since this update.
+        As a token of gratitude, I am offering you half the price before the app reach its 1k milestone using the code
+        NEMO_FRIEND. Thank you so much for being here so early with me.
+
+      <form id="love-letter-activation-form" style="margin-bottom: 16px;">
+        <input name="activation-key" id="love-letter-activation-input" placeholder="Enter your activation code" />
+        <button type="submit" id="love-letter-activate-button">Activate</button>
+        <button class="pay-button">Buy Freeze DOM</button>
+      </form>
+
+      If you have any question or would like to stay in touched, feel free to connect on <a
+        href="https://twitter.com/phamhuyphat" target="_blank">X</a>.
+      <br />
+      <br />
+      With all my sincerity, <a href="https://nemothecollector.dev/" target="_blank">
+        Nemo
+      </a> 💌
+
+      </p>
+    </div>
+    <div style="display: none;" id="activated-banner">
+      <h1>
+        You bought Freeze DOM, enjoy its unlimited usage!
+      </h1>
+      <p>
+        Thank you for showing your support, feel free to reach out to me if you have any question or feedback at <a
+          href="https://twitter.com/phamhuyphat" target="_blank">X</a>.
+      </p>
+    </div>
+    <div style="display: none; font-size: 16px;" id="activation-section">
+      <p>
+        You have used up 3 freezing DOM trial. To continue using Freeze DOM, please activate it.
+      </p>
+      <form id="activation-form">
+        <input name="activation-key" id="activation-input" placeholder="Enter your activation code" />
+        <button type="submit" id="activate-button">Activate</button>
+        <button class="pay-button">Buy Freeze DOM</button>
+      </form>
+    </div>
+
+  </div>
+
+
+  <script src="options.js"></script>
+
+  <!--
+      This HTML file opens when you click on icon from the toolbar.
+
+      To begin the development, run `npm run watch`.
+      To create a production bundle, use `npm run build`.
+    -->
+</body>
+
+</html>
