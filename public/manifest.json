@@ -7,7 +7,7 @@
   "host_permissions": ["https://api.lemonsqueezy.com/*"],
   "commands": {
     "freeze-dom": {
-      "suggested_key": "Ctrl+Shift+S",
+      "suggested_key": "Ctrl+Shift+Y",
       "description": "Freeze the DOM instantly"
     }
   },

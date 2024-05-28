@@ -2,32 +2,25 @@ import {
   getAnObjectFromLocalStorage,
   writeAnObjectToLocalStorage,
 } from './chromeStorageHelper';
-import { activate, validate } from './lemonSqueezy';
+import { activate } from './lemonSqueezy';
 
 
-const checkoutLink = 'https://nemo-crafting.lemonsqueezy.com/checkout';
-
-
-async function checkIfActivated() {
-  const licenseKey = await getAnObjectFromLocalStorage('licenseKey');
-  const instanceId = await getAnObjectFromLocalStorage('instanceId');
-  if (licenseKey && instanceId) {
-    const response = await validate(licenseKey, instanceId);
-    if (response.status === 200) {
-      return true;
-    }
-  }
-  return false;
-}
+const checkoutLink = 'https://nemo-crafting.lemonsqueezy.com/buy/8821e00a-f253-422d-8e40-29bea5757621';
 
 async function init() {
+  const isActivated = await getAnObjectFromLocalStorage('isActivated');
   const trialAttempt = await getAnObjectFromLocalStorage("trialAttempt");
   const activatedBanner = document.getElementById('activated-banner');
     const activationSection = document.getElementById('activation-section');
     const loveLetterElement = document.getElementById('love-letter');
   const isTrialAttemptUsedUp = Number(trialAttempt) === 0;
+  if (isActivated) {
+    activatedBanner.style.display = 'block';
+    activationSection.style.display = 'none';
+    loveLetterElement.style.display = 'none';
+    return;
+  }
   if (isTrialAttemptUsedUp) {
-    const isActivated = await checkIfActivated();
     if (!isActivated) {
       alert('Please activate the extension to use this feature');
     }
@@ -48,15 +41,13 @@ async function init() {
       );
     });
   });
-  
-  
 
   const loveLetterActivationForm = document.getElementById('love-letter-activation-form');
   loveLetterActivationForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const activationCode = document.getElementById('love-letter-activation-input').value;
     activate(activationCode).then(async (data) => {
-      if (!data || data.error) {
+      if (!data || data.errors) {
         alert('Activation failed!');
         return;
       }
@@ -68,19 +59,16 @@ async function init() {
     });
   });  
   
-
   const activationForm = document.getElementById('activation-form');
   activationForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const activationCode = document.getElementById('activation-input').value;
     activate(activationCode).then(async (data) => {
-      if (!data || data.error) {
+      if (!data || data.errors) {
         alert('Activation failed!');
         return;
       }
-      const { license_key, instance } = data;
-      await writeAnObjectToLocalStorage('licenseKey', license_key.key);
-      await writeAnObjectToLocalStorage('instanceId', instance.id);
+      await writeAnObjectToLocalStorage('isActivated', true);
       const activatedBanner = document.getElementById('activated-banner');
       const activationSection = document.getElementById('activation-section');
       activatedBanner.style.display =  'block';
