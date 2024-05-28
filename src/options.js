@@ -4,6 +4,10 @@ import {
 } from './chromeStorageHelper';
 import { activate, validate } from './lemonSqueezy';
 
+
+const checkoutLink = 'https://nemo-crafting.lemonsqueezy.com/checkout';
+
+
 async function checkIfActivated() {
   const licenseKey = await getAnObjectFromLocalStorage('licenseKey');
   const instanceId = await getAnObjectFromLocalStorage('instanceId');
@@ -39,7 +43,7 @@ async function init() {
   Array.from(payButtons).forEach((payButton) => {
     payButton.addEventListener('click', () => {
       window.open(
-        'https://nemo-crafting.lemonsqueezy.com/buy/d620d023-2cc7-4d00-8f3f-918ca77e3001',
+        checkoutLink,
         '_blank'
       );
     });

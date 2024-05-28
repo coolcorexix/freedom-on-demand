@@ -1,7 +1,7 @@
 {
   "name": "Freeze DOM",
   "version": "1.0.0",
-  "description": "Freeze the DOM instantly",
+  "description": "Freeze the DOM instantly to inspect tricky HTML/CSS areas",
   "manifest_version": 3,
   "permissions": ["contextMenus", "scripting", "activeTab", "storage"],
   "host_permissions": ["https://api.lemonsqueezy.com/*"],
